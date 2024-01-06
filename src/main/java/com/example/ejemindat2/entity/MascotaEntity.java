@@ -5,25 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Usuarios")
-
-public class UserEntity {
+@Table(name = "Muchas mascotas")
+public class MascotaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "Nombre", nullable = true)
     private String name;
-    @Column(name = "Edad")
-    private Integer age;
+    private String Raza;
 
-    @OneToMany(mappedBy = "user")
-    private List<MascotaEntity> masc=new ArrayList<>();
+    private Integer Peso;
+
+    @ManyToOne
+    @JoinTable(name = "id_usuarios")
+
+    private UserEntity user;
 
 }
